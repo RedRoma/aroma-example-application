@@ -11,8 +11,7 @@
     <url>https://github.com/AromaTech/banana-example-application</url>
     <description>
         Part of the Banana Service Project.
-        Simplicity is paramount.
-        This is the Java Client for the Banana Service.
+        This is an example Java Application that uses the Banana Service.
     </description>
 
     <issueManagement>
