@@ -84,6 +84,12 @@
             <artifactId>alchemy-generator</artifactId>
             <scope>compile</scope>
         </dependency>
+        
+        <dependency>
+            <groupId>tech.sirwellington.alchemy</groupId>
+            <artifactId>alchemy-http</artifactId>
+            <version>1.2-SNAPSHOT</version>
+        </dependency>
 
 
         <!--=======================-->
@@ -108,7 +114,7 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
         </dependency>
-
+   
     </dependencies>
 
     <build>
