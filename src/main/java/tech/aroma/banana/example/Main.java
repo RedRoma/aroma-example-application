@@ -27,6 +27,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import tech.aroma.banana.client.Banana;
 import tech.aroma.banana.client.Urgency;
+import tech.aroma.banana.thrift.endpoint.TcpEndpoint;
+import tech.aroma.banana.thrift.service.BananaServiceConstants;
 import tech.sirwellington.alchemy.generator.AlchemyGenerator;
 import tech.sirwellington.alchemy.generator.StringGenerators;
 
@@ -55,8 +57,14 @@ public class Main
     
     private static final AlchemyGenerator<Urgency> URGENCIES = enumValueOf(Urgency.class);
     
-    private static final Banana BANANA = Banana.create();
+    private static final TcpEndpoint ENDPOINT = BananaServiceConstants.BETA_ENDPOINT;
     
+    private static final Banana BANANA = Banana.newBuilder()
+        .withEndpoint(ENDPOINT.hostname, ENDPOINT.port)
+        .withApplicationToken("banana")
+        .withAsyncExecutorService(Executors.newSingleThreadExecutor())
+        .build();
+
     public static void main(String[] args) throws IOException
     {
         LOG.info("Opening port at {}", PORT);
