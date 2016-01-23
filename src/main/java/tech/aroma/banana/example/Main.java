@@ -34,6 +34,7 @@ import tech.sirwellington.alchemy.generator.StringGenerators;
 
 import static tech.sirwellington.alchemy.generator.AlchemyGenerator.one;
 import static tech.sirwellington.alchemy.generator.EnumGenerators.enumValueOf;
+import static tech.sirwellington.alchemy.generator.StringGenerators.alphabeticString;
 
 /**
  *
@@ -47,7 +48,7 @@ public class Main
     
     private static final ScheduledExecutorService EXECUTOR = Executors.newScheduledThreadPool(2);
     
-    private static AlchemyGenerator<String> MESSAGES = StringGenerators.stringsFromFixedList("Something really bad has happened",
+    private static AlchemyGenerator<String> TITLES = StringGenerators.stringsFromFixedList("Something really bad has happened",
                                                                                             "New User just signed up",
                                                                                             "User has deleted his account",
                                                                                             "Databse conneciton timed out",
@@ -82,11 +83,13 @@ public class Main
     private static void sendMessage()
     {
         LOG.info("Sending Message");
-        String message = one(MESSAGES);
+        String title = one(TITLES);
+        String randomMessage = one(alphabeticString(100));
         Urgency urgency = one(URGENCIES);
         
         BANANA.begin()
-            .message(message)
+            .titled(title)
+            .text(randomMessage)
             .withUrgency(urgency)
             .send();
     }
