@@ -65,8 +65,8 @@ public class Main
 
     private static final ScheduledExecutorService EXECUTOR = Executors.newScheduledThreadPool(2);
 
-    private static final String APP_ID = "0d5e293c-cd82-4d29-b0e3-375ee05a9b39";
-    private static final String APP_TOKEN = "b6f5bb7b-fb49-4845-932d-cbb259810d39";
+    private static final String APP_ID = "37ec7417-7c6d-4359-b463-2f4d129a752f";
+    private static final String APP_TOKEN = "1ed567e3-9264-4358-8c22-30deb02d3cab";
     
     private static final AlchemyGenerator<String> TITLES = StringGenerators.stringsFromFixedList(
         "Network Meltdown",
@@ -89,9 +89,23 @@ public class Main
 
     public static void main(String[] args) throws IOException, TException
     {
+        startApp();
+        
+//        UserToken userToken = signIn();
+//        LOG.info("Created account and got user token: {}", userToken);
+//        
+//        Application app = reuseApp();//createApplication(userToken);
+//        LOG.info("Created Application: {}", app);
+//        
+//        ApplicationToken appToken = getAppTokenFor(userToken, app);
+//        LOG.info("Got Application Token: {}", appToken);
+    }
+    
+    private static void startApp() throws IOException
+    {
         LOG.info("Opening port at {}", PORT);
         openPortAt(PORT);
-        
+
         LOG.info("Opened port at {}", PORT);
         EXECUTOR.scheduleAtFixedRate(Main::sendMessage, 1, 5, TimeUnit.SECONDS);
     }
@@ -167,6 +181,13 @@ public class Main
         BananaService.Client client = Clients.newBananaServiceClient();
         RegenerateApplicationTokenResponse response = client.regenerateToken(request);
         return response.applicationToken;
+    }
+
+    private static Application reuseApp()
+    {
+        return new Application()
+            .setApplicationId(APP_ID)
+            .setName("Banana Example");
     }
 
 }
