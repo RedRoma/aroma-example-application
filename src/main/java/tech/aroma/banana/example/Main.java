@@ -69,13 +69,21 @@ public class Main
     private static final String APP_TOKEN = "1ed567e3-9264-4358-8c22-30deb02d3cab";
     
     private static final AlchemyGenerator<String> TITLES = StringGenerators.stringsFromFixedList(
-        "Network Meltdown",
+        "App Crashed",
+        "App Launched",
+        "App Updated",
+        "Network Issue",
         "New User",
-        "User has deleted his account",
-        "Databse Connection Timed Out",
+        "Build Failed",
+        "Token Expired",
+        "Disk Full",
+        "User Deleted Account",
+        "Invalid Credit Card",
+        "Database Time Out",
         "Could not reach Authentication Service",
-        "Filesystem is out of disk space",
-        "Unauthozied Action");
+        "Could not reach Twilio",
+        "Unauthozied Action",
+        "User Bought Item");
 
     private static final AlchemyGenerator<Urgency> URGENCIES = enumValueOf(Urgency.class);
 
