@@ -78,11 +78,13 @@ public class Main
         "Token Expired",
         "Disk Full",
         "User Deleted Account",
-        "Invalid Credit Card",
+        "Invalid Credit Card Used",
         "Database Time Out",
         "Could not reach Authentication Service",
         "Could not reach Twilio",
         "Unauthozied Action",
+        "Service Redeployed",
+        "Database Query Failed",
         "User Bought Item");
 
     private static final AlchemyGenerator<Urgency> URGENCIES = enumValueOf(Urgency.class);
@@ -197,5 +199,5 @@ public class Main
             .setApplicationId(APP_ID)
             .setName("Banana Example");
     }
-
+    
 }
