@@ -67,7 +67,7 @@ public class Main
 
     private static final String APP_ID = "37ec7417-7c6d-4359-b463-2f4d129a752f";
     private static final String APP_TOKEN = "1ed567e3-9264-4358-8c22-30deb02d3cab";
-    
+
     private static final AlchemyGenerator<String> TITLES = StringGenerators.stringsFromFixedList(
         "App Crashed",
         "App Launched",
@@ -82,7 +82,7 @@ public class Main
         "Database Time Out",
         "Could not reach Authentication Service",
         "Could not reach Twilio",
-        "Unauthozied Action",
+        "Unauthorized Action",
         "Service Redeployed",
         "Database Query Failed",
         "User Bought Item");
@@ -100,7 +100,7 @@ public class Main
     public static void main(String[] args) throws IOException, TException
     {
         startApp();
-        
+
 //        UserToken userToken = signIn();
 //        LOG.info("Created account and got user token: {}", userToken);
 //        
@@ -110,7 +110,7 @@ public class Main
 //        ApplicationToken appToken = getAppTokenFor(userToken, app);
 //        LOG.info("Got Application Token: {}", appToken);
     }
-    
+
     private static void startApp() throws IOException
     {
         LOG.info("Opening port at {}", PORT);
@@ -187,7 +187,7 @@ public class Main
         RegenerateApplicationTokenRequest request = new RegenerateApplicationTokenRequest()
             .setToken(userToken)
             .setApplicationId(app.applicationId);
-        
+
         BananaService.Client client = Clients.newBananaServiceClient();
         RegenerateApplicationTokenResponse response = client.regenerateToken(request);
         return response.applicationToken;
@@ -199,5 +199,5 @@ public class Main
             .setApplicationId(APP_ID)
             .setName("Banana Example");
     }
-    
+
 }
