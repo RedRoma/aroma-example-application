@@ -87,6 +87,9 @@ public class Main
         "Unauthorized Action",
         "Service Redeployed",
         "Database Query Failed",
+        "Device Lost Connection",
+        "Battery Low",
+        "Alarm Triggered",
         "User Bought Item");
 
     private static final AlchemyGenerator<Urgency> URGENCIES = enumValueOf(Urgency.class);
