@@ -29,7 +29,6 @@ import tech.aroma.banana.client.Banana;
 import tech.aroma.banana.client.Urgency;
 import tech.aroma.banana.thrift.Application;
 import tech.aroma.banana.thrift.ProgrammingLanguage;
-import tech.aroma.banana.thrift.Role;
 import tech.aroma.banana.thrift.Tier;
 import tech.aroma.banana.thrift.application.service.ApplicationServiceConstants;
 import tech.aroma.banana.thrift.authentication.ApplicationToken;
@@ -42,10 +41,6 @@ import tech.aroma.banana.thrift.service.ProvisionApplicationRequest;
 import tech.aroma.banana.thrift.service.ProvisionApplicationResponse;
 import tech.aroma.banana.thrift.service.RegenerateApplicationTokenRequest;
 import tech.aroma.banana.thrift.service.RegenerateApplicationTokenResponse;
-import tech.aroma.banana.thrift.service.SignInRequest;
-import tech.aroma.banana.thrift.service.SignInResponse;
-import tech.aroma.banana.thrift.service.SignUpRequest;
-import tech.aroma.banana.thrift.service.SignUpResponse;
 import tech.aroma.banana.thrift.services.Clients;
 import tech.sirwellington.alchemy.generator.AlchemyGenerator;
 import tech.sirwellington.alchemy.generator.StringGenerators;
@@ -67,8 +62,8 @@ public class Main
 
     private static final ScheduledExecutorService EXECUTOR = Executors.newScheduledThreadPool(2);
 
-    private static final String APP_ID = "37ec7417-7c6d-4359-b463-2f4d129a752f";
-    private static final String APP_TOKEN = "1ed567e3-9264-4358-8c22-30deb02d3cab";
+    private static final String APP_ID = "5b7833c5-d3dc-4b6b-a29c-ba2a9dddba35";
+    private static final String APP_TOKEN = "82b7e70f-c88e-4e95-8aa3-843b14a95a2b";
 
     private static final AlchemyGenerator<String> TITLES = StringGenerators.stringsFromFixedList(
         "App Crashed",
@@ -107,21 +102,20 @@ public class Main
         startApp();
 
 //        UserToken userToken = signIn();
-//        LOG.info("Created account and got user token: {}", userToken);
-//        
-//        Application app = reuseApp();//createApplication(userToken);
+////        
+//        Application app = createApplication(userToken);
 //        LOG.info("Created Application: {}", app);
-//        
+////        
 //        ApplicationToken appToken = getAppTokenFor(userToken, app);
 //        LOG.info("Got Application Token: {}", appToken);
     }
 
     private static void startApp() throws IOException
     {
-        LOG.info("Opening port at {}", PORT);
-        openPortAt(PORT);
-
-        LOG.info("Opened port at {}", PORT);
+//        LOG.info("Opening port at {}", PORT);
+//        openPortAt(PORT);
+//        LOG.info("Opened port at {}", PORT);
+//        
         EXECUTOR.scheduleAtFixedRate(Main::sendMessage, 1, 1, TimeUnit.SECONDS);
     }
 
@@ -145,31 +139,10 @@ public class Main
             .send();
     }
 
-    private static UserToken createAccount() throws TTransportException, TException
-    {
-        SignUpRequest request = new SignUpRequest()
-            .setEmail("jwellington.moreno@gmail.com")
-            .setFirstName("Juan")
-            .setMiddleName("Wellington")
-            .setLastName("Moreno")
-            .setMainRole(Role.DEVELOPER)
-            .setUsername("sirwellington");
-
-        BananaService.Client client = Clients.newBananaServiceClient();
-        SignUpResponse response = client.signUp(request);
-
-        return response.getUserToken();
-    }
-
     private static UserToken signIn() throws TTransportException, TException
     {
-        SignInRequest request = new SignInRequest()
-            .setEmailAddress("jwellington.moreno@gmail.com");
-
-        BananaService.Client client = Clients.newBananaServiceClient();
-
-        SignInResponse response = client.signIn(request);
-        return response.getUserToken();
+        return new UserToken()
+            .setTokenId("53fbe000-f8ce-4301-a774-c384561c51b3");
     }
 
     private static Application createApplication(UserToken token) throws TException
