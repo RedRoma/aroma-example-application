@@ -63,7 +63,7 @@ public class Main
     private static final ScheduledExecutorService EXECUTOR = Executors.newScheduledThreadPool(2);
 
     private static final String APP_ID = "5b7833c5-d3dc-4b6b-a29c-ba2a9dddba35";
-    private static final String APP_TOKEN = "82b7e70f-c88e-4e95-8aa3-843b14a95a2b";
+    private static final String APP_TOKEN = "3dcaa6d0-69a2-400e-aaef-0d56020dd08c";
 
     private static final AlchemyGenerator<String> TITLES = StringGenerators.stringsFromFixedList(
         "App Crashed",
