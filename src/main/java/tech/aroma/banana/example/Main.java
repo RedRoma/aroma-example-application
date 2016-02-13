@@ -112,9 +112,9 @@ public class Main
 
     private static void startApp() throws IOException
     {
-//        LOG.info("Opening port at {}", PORT);
-//        openPortAt(PORT);
-//        LOG.info("Opened port at {}", PORT);
+        LOG.info("Opening port at {}", PORT);
+        openPortAt(PORT);
+        LOG.info("Opened port at {}", PORT);
 //        
         EXECUTOR.scheduleAtFixedRate(Main::sendMessage, 1, 1, TimeUnit.SECONDS);
     }
