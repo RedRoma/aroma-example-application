@@ -35,8 +35,6 @@ import tech.aroma.banana.thrift.authentication.ApplicationToken;
 import tech.aroma.banana.thrift.authentication.UserToken;
 import tech.aroma.banana.thrift.endpoint.TcpEndpoint;
 import tech.aroma.banana.thrift.service.BananaService;
-import tech.aroma.banana.thrift.service.GetMessagesRequest;
-import tech.aroma.banana.thrift.service.GetMessagesResponse;
 import tech.aroma.banana.thrift.service.ProvisionApplicationRequest;
 import tech.aroma.banana.thrift.service.ProvisionApplicationResponse;
 import tech.aroma.banana.thrift.service.RegenerateApplicationTokenRequest;
@@ -178,18 +176,4 @@ public class Main
             .setName("Banana Example");
     }
 
-    private static void getMessages() throws TTransportException, TException
-    {
-        UserToken userToken = signIn();
-
-        BananaService.Client client = Clients.newBananaServiceClient();
-
-        GetMessagesRequest request = new GetMessagesRequest()
-            .setApplicationId(APP_ID)
-            .setLimit(1000)
-            .setToken(userToken);
-
-        GetMessagesResponse response = client.getMessages(request);
-        LOG.info("Messages: {}", response.messages);
-    }
 }
