@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
+ 
     <parent>
-        <groupId>tech.aroma.banana</groupId>
-        <artifactId>banana</artifactId>
-        <version>1.3</version>
+        <groupId>tech.aroma</groupId>
+        <artifactId>aroma</artifactId>
+        <version>1.4-SNAPSHOT</version>
     </parent>
 
-    <groupId>tech.aroma.banana.example</groupId>
-    <artifactId>banana-example-application</artifactId>
+    <groupId>tech.aroma.example</groupId>
+    <artifactId>aroma-example-application</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>${project.artifactId}</name>
     <packaging>jar</packaging>
 
-    <url>https://github.com/AromaTech/banana-example-application</url>
+    <url>https://github.com/RedRoma/aroma-example-application</url>
     <description>
         Part of the Banana Service Project.
         This is an example Java Application that uses the Banana Service.
@@ -22,13 +22,13 @@
 
     <issueManagement>
         <system>GitHub Issues</system>
-        <url>https://github.com/AromaTech/banana-example-application/issues</url>
+        <url>https://github.com/RedRoma/aroma-example-application/issues</url>
     </issueManagement>
 
     <scm>
-        <connection>scm:git:git@github.com:AromaTech/banana-example-application.git</connection>
-        <developerConnection>scm:git:git@github.com:AromaTech/banana-example-application.git</developerConnection>
-        <url>git@github.com:AromaTech/banana-example-application-annotations.git</url>
+        <connection>scm:git:git@github.com:RedRoma/aroma-example-application.git</connection>
+        <developerConnection>scm:git:git@github.com:RedRoma/aroma-example-application.git</developerConnection>
+        <url>git@github.com:RedRoma/aroma-example-application-annotations.git</url>
     </scm>
 
     <inceptionYear>2015</inceptionYear>
