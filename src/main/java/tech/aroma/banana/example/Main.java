@@ -25,21 +25,21 @@ import org.apache.thrift.TException;
 import org.apache.thrift.transport.TTransportException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import tech.aroma.banana.client.Banana;
-import tech.aroma.banana.client.Urgency;
-import tech.aroma.banana.thrift.Application;
-import tech.aroma.banana.thrift.ProgrammingLanguage;
-import tech.aroma.banana.thrift.Tier;
-import tech.aroma.banana.thrift.application.service.ApplicationServiceConstants;
-import tech.aroma.banana.thrift.authentication.ApplicationToken;
-import tech.aroma.banana.thrift.authentication.UserToken;
-import tech.aroma.banana.thrift.endpoint.TcpEndpoint;
-import tech.aroma.banana.thrift.service.BananaService;
-import tech.aroma.banana.thrift.service.ProvisionApplicationRequest;
-import tech.aroma.banana.thrift.service.ProvisionApplicationResponse;
-import tech.aroma.banana.thrift.service.RegenerateApplicationTokenRequest;
-import tech.aroma.banana.thrift.service.RegenerateApplicationTokenResponse;
-import tech.aroma.banana.thrift.services.Clients;
+import tech.aroma.client.Aroma;
+import tech.aroma.client.Urgency;
+import tech.aroma.thrift.Application;
+import tech.aroma.thrift.ProgrammingLanguage;
+import tech.aroma.thrift.Tier;
+import tech.aroma.thrift.application.service.ApplicationServiceConstants;
+import tech.aroma.thrift.authentication.ApplicationToken;
+import tech.aroma.thrift.authentication.UserToken;
+import tech.aroma.thrift.endpoint.TcpEndpoint;
+import tech.aroma.thrift.service.AromaService;
+import tech.aroma.thrift.service.ProvisionApplicationRequest;
+import tech.aroma.thrift.service.ProvisionApplicationResponse;
+import tech.aroma.thrift.service.RegenerateApplicationTokenRequest;
+import tech.aroma.thrift.service.RegenerateApplicationTokenResponse;
+import tech.aroma.thrift.services.Clients;
 import tech.sirwellington.alchemy.generator.AlchemyGenerator;
 import tech.sirwellington.alchemy.generator.StringGenerators;
 
@@ -89,7 +89,7 @@ public class Main
 
     private static final TcpEndpoint ENDPOINT = ApplicationServiceConstants.BETA_ENDPOINT;
 
-    private static final Banana BANANA = Banana.newBuilder()
+    private static final Aroma BANANA = Aroma.newBuilder()
         .withEndpoint(ENDPOINT.hostname, ENDPOINT.port)
         .withApplicationToken(APP_TOKEN)
         .withAsyncExecutorService(Executors.newSingleThreadExecutor())
@@ -110,10 +110,10 @@ public class Main
 
     private static void startApp() throws IOException
     {
-        LOG.info("Opening port at {}", PORT);
-        openPortAt(PORT);
-        LOG.info("Opened port at {}", PORT);
-//        
+//        LOG.info("Opening port at {}", PORT);
+//        openPortAt(PORT);
+//        LOG.info("Opened port at {}", PORT);
+        
         EXECUTOR.scheduleAtFixedRate(Main::sendMessage, 1, 1, TimeUnit.SECONDS);
     }
 
@@ -147,12 +147,12 @@ public class Main
     {
         ProvisionApplicationRequest request = new ProvisionApplicationRequest()
             .setToken(token)
-            .setApplicationName("Banana Example")
+            .setApplicationName("Aroma Example")
             .setProgrammingLanguage(ProgrammingLanguage.JAVA)
             .setTier(Tier.PAID)
-            .setApplicationDescription("Example Banana Application");
+            .setApplicationDescription("Example Aroma Application");
 
-        BananaService.Client client = Clients.newBananaServiceClient();
+        AromaService.Client client = Clients.newAromaServiceClient();
         ProvisionApplicationResponse response = client.provisionApplication(request);
 
         return response.applicationInfo;
@@ -164,7 +164,7 @@ public class Main
             .setToken(userToken)
             .setApplicationId(app.applicationId);
 
-        BananaService.Client client = Clients.newBananaServiceClient();
+        AromaService.Client client = Clients.newAromaServiceClient();
         RegenerateApplicationTokenResponse response = client.regenerateToken(request);
         return response.applicationToken;
     }
@@ -173,7 +173,7 @@ public class Main
     {
         return new Application()
             .setApplicationId(APP_ID)
-            .setName("Banana Example");
+            .setName("Aroma Example");
     }
 
 }
