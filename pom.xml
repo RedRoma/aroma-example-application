@@ -16,8 +16,8 @@
 
     <url>https://github.com/RedRoma/aroma-example-application</url>
     <description>
-        Part of the Banana Service Project.
-        This is an example Java Application that uses the Banana Service.
+        Part of the Aroma Project.
+        This is an example Java Application that uses the Aroma Java Client.
     </description>
 
     <issueManagement>
