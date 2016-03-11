@@ -114,7 +114,7 @@ public class Main
         openPortAt(PORT);
         LOG.info("Opened port at {}", PORT);
         
-        EXECUTOR.scheduleAtFixedRate(Main::sendMessage, 1, 1, TimeUnit.SECONDS);
+        EXECUTOR.scheduleAtFixedRate(Main::sendMessage, 2000, 500, TimeUnit.MILLISECONDS);
     }
 
     private static void openPortAt(int port) throws IOException
