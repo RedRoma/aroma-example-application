@@ -87,7 +87,7 @@ public class Main
 
     private static final AlchemyGenerator<Urgency> URGENCIES = enumValueOf(Urgency.class);
 
-    private static final TcpEndpoint ENDPOINT = ApplicationServiceConstants.BETA_ENDPOINT;
+    private static final TcpEndpoint ENDPOINT = ApplicationServiceConstants.PRODUCTION_ENDPOINT;
 
     private static final Aroma BANANA = Aroma.newBuilder()
         .withEndpoint(ENDPOINT.hostname, ENDPOINT.port)
