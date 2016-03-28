@@ -89,7 +89,7 @@ public class Main
 
     private static final TcpEndpoint ENDPOINT = ApplicationServiceConstants.BETA_ENDPOINT;
 
-    private static final Aroma BANANA = Aroma.newBuilder()
+    private static final Aroma AROMA = Aroma.newBuilder()
         .withEndpoint(ENDPOINT.hostname, ENDPOINT.port)
         .withApplicationToken(APP_TOKEN)
         .withAsyncExecutorService(Executors.newSingleThreadExecutor())
@@ -130,7 +130,7 @@ public class Main
         String randomMessage = one(alphabeticString(100));
         Urgency urgency = one(URGENCIES);
 
-        BANANA.begin()
+        AROMA.begin()
             .titled(title)
             .text(randomMessage)
             .withUrgency(urgency)
