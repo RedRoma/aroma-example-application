@@ -114,6 +114,14 @@ public class Main
         openPortAt(PORT);
         LOG.info("Opened port at {}", PORT);
         
+        Aroma aroma = Aroma.create(APP_TOKEN);
+        String email = "";
+        
+        aroma.begin()
+            .titled("New User")
+            .text("Email: {}", email)
+            .send();
+        
         EXECUTOR.scheduleAtFixedRate(Main::sendMessage, 2000, 500, TimeUnit.MILLISECONDS);
     }
 
