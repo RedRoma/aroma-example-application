@@ -77,7 +77,7 @@ public class Main
     private static final TcpEndpoint ENDPOINT = ApplicationServiceConstants.BETA_ENDPOINT;
 
     private static final Aroma AROMA = Aroma.newBuilder()
-        .withEndpoint("aroma-application-srv.us-west-2.elasticbeanstalk.com", 80)
+        .withEndpoint(ENDPOINT.hostname, ENDPOINT.port)
         .withApplicationToken(APP_TOKEN)
         .withAsyncExecutorService(Executors.newSingleThreadExecutor())
         .build();
