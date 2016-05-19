@@ -112,7 +112,7 @@ public class Main
         Urgency urgency = one(URGENCIES);
 
         AROMA.begin()
-            .titled("Yo!!!")
+            .titled(title)
             .text(randomMessage)
             .withUrgency(urgency)
             .send();
