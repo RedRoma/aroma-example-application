@@ -48,7 +48,7 @@ public class Main
 
     private static final ScheduledExecutorService EXECUTOR = Executors.newScheduledThreadPool(2);
 
-    private static final String APP_TOKEN = "fc1d0e37-2061-458f-8488-855ceeca0289";
+    private static final String APP_TOKEN = "ec033ff6-af81-4678-8a79-a4c4aa8a37fc";
 
     private static final AlchemyGenerator<String> TITLES = StringGenerators.stringsFromFixedList(
         "App Crashed",
@@ -72,9 +72,9 @@ public class Main
         "Alarm Triggered",
         "User Bought Item");
 
-    private static final AlchemyGenerator<Urgency> URGENCIES = enumValueOf(Urgency.class);
+    private static final AlchemyGenerator<Urgency> PRIORITIES = enumValueOf(Urgency.class);
 
-    private static final TcpEndpoint ENDPOINT = ApplicationServiceConstants.BETA_ENDPOINT;
+    private static final TcpEndpoint ENDPOINT = ApplicationServiceConstants.PRODUCTION_ENDPOINT;
 
     private static final Aroma AROMA = Aroma.newBuilder()
         .withEndpoint(ENDPOINT.hostname, ENDPOINT.port)
@@ -89,19 +89,20 @@ public class Main
 
     private static void startApp() throws IOException
     {
-        LOG.info("Opening port at {}", PORT);
-       
         openPortAt(PORT);
        
-        LOG.info("Opened port at {}", PORT);
-        
         EXECUTOR.scheduleAtFixedRate(Main::sendMessage, 2000, 2000, TimeUnit.MILLISECONDS);
     }
 
     private static void openPortAt(int port) throws IOException
     {
+        LOG.info("Opening port at {}", port);
+
         ServerSocket socket = new ServerSocket(port);
         EXECUTOR.submit(() -> socket.accept());
+
+        LOG.info("Opened port at {}", port);
+
     }
 
     private static void sendMessage()
@@ -109,7 +110,7 @@ public class Main
         LOG.info("Sending Message");
         String title = one(TITLES);
         String randomMessage = one(alphabeticString(100));
-        Urgency urgency = one(URGENCIES);
+        Urgency urgency = one(PRIORITIES);
 
         AROMA.begin()
             .titled(title)
